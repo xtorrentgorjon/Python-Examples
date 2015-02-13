@@ -1,11 +1,5 @@
-#####
-# Python Examples:
-#        linked_list.py
-#
-# Linked list implementation in Python.
-#
-# Xavier Torrent Gorjon
-#####
+__author__ = 'sendotux'
+
 
 class Element(object):
     """Class that represents nodes on the linked list."""
