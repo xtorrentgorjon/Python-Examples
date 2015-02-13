@@ -1,11 +1,4 @@
-#####
-# Python Examples:
-#        multicast.py
-#
-# Multicast communication example.
-#
-# Xavier Torrent Gorjon
-#####
+__author__ = 'sendotux'
 
 import socket
 import struct
