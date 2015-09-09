@@ -1,0 +1,42 @@
+#####
+# Python Examples:
+#        multiprocessing.py
+#
+# Extremely simple communication between processes.
+#
+# Xavier Torrent Gorjon
+#####
+
+
+import multiprocessing as mp
+import time
+
+
+class proc(mp.Process):
+	def __init__(self, queuein, queueout):
+        	mp.Process.__init__(self)
+		self.__i = 0
+		self.__queuein = queuein
+		self.__queueout = queueout
+
+	def run(self):
+		for n in range(1000000):
+			self.__i += 1
+			time.sleep(0.0001)
+			if not self.__queuein.empty():
+				self.__queuein.get()
+				self.__queueout.put(self.__i)
+
+
+if __name__ == "__main__":
+	q1 = mp.Queue()
+	q2 = mp.Queue()
+	p = proc(q1,q2)
+	p.start()
+
+	while True:
+		x = raw_input()
+		q1.put(x)
+		while q2.empty():
+			pass
+		print q2.get()
